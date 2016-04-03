@@ -564,7 +564,7 @@ public class Node
 		boolean flag = true;
 		try 
 		{
-			File file = new File("properties/system.properties");
+			File file = new File("system.properties");
 			FileInputStream fis = new FileInputStream(file);
 			Properties properties = new Properties();
 			properties.load(fis);
