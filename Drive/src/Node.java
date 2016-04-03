@@ -81,8 +81,8 @@ public class Node
 	// detect whether we have the leader, if not, may wanna keep above hash map, else, clean up the has map cause job has been done by leader
 	public static boolean _hasLeader = false;
 
-	final static String localFilePath = "/home/pshrvst2/local/";
-	final static String sdfsFilePath = "/home/pshrvst2/sdfs/";
+	public static String localFilePath = "";
+	public static String sdfsFilePath = "";
 	
 	//final static String localFilePath = "/home/xchen135/local/";
     //final static String sdfsFilePath = "/home/xchen135/sdfs/";
@@ -98,8 +98,8 @@ public class Node
 		{
 			if(initLogging())
 			{
-				_logger.info("Logging is succesfully initialized! Refer log file CS425_MP2_node.log");
-				System.out.println("Logging is succesfully initialized! Refer log file CS425_MP2_node.log");
+				_logger.info("Logging is succesfully initialized! Refer log file MyDrive.log");
+				System.out.println("Logging is succesfully initialized! Refer log file MyDrive.log");
 			}
 			else
 			{
@@ -115,10 +115,10 @@ public class Node
 			boolean flag = true;
 			while(flag)
 			{
-				System.out.println("\tWelcome to the CallMeIshmael Inc!");
+				System.out.println("\tWelcome to the MyDrive Inc!");
 				System.out.println("\tPress 1 to join");
 				System.out.println("\tPress 2 for system info");
-				System.out.println("\t!!Press any other key to shoot you!!");
+				System.out.println("\t!!Press any other key to exit!!");
 				BufferedReader readerKeyboard = new BufferedReader(new InputStreamReader(System.in));
 				String option = readerKeyboard.readLine();
 				if(option.equalsIgnoreCase("1"))
@@ -129,7 +129,7 @@ public class Node
 				}
 				else
 				{
-					System.out.println("\tYou are dead and will be on the instagram soon! RIP!!!!");
+					System.out.println("\tWe are sorry. That option was invalid. Pls try again!!!!");
 					return;
 				}
 			}
@@ -148,7 +148,7 @@ public class Node
 			//check systems properties and load them
 			if(!loadSystemProperties())
 			{
-				System.out.println("System.properties file missing or wrong config! Exiting!");
+				System.out.println("System.properties file missing or wrong/missing config! Exiting!");
 				return;
 			}
 			  
@@ -575,13 +575,17 @@ public class Node
 				String key = (String) keys.nextElement();
 				String val = properties.getProperty(key);
 				if(key.equals("introIp"))
-				{
 					_introducerIp = val;
-					return flag;
-				}
+				else if(key.equals("localFilePath"))
+					localFilePath = val;
+				else if(key.equals("sdfsFilePath"))
+					sdfsFilePath = val;
 			}
-			_logger.error("System properties missing! Check configurations!!");
-			flag = false;
+			if(_introducerIp.equals("") || localFilePath.equals("") || sdfsFilePath.equals(""))
+			{
+				_logger.error("System properties missing! Check configurations!!");
+				flag = false;
+			}
 		} 
 		catch (FileNotFoundException e) 
 		{

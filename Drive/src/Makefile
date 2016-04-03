@@ -5,7 +5,10 @@ install:
 	echo "export PATH=\$$HOME/jdk1.8.0_60/bin/:\$$PATH" >> ~/.bash_profile
 	echo "export CLASSPATH=\$$CLASSPATH:.:bin:lib/*" >> ~/.bash_profile
 	source ~/.bash_profile
-
+	
+dir:
+	mkdir $$HOME/local
+	mkdir $$HOME/sdfs
 
 all:
 	$$HOME/jdk1.8.0_60/bin/javac -cp ".:./log4j-1.2.17.jar" *.java
