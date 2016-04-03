@@ -109,9 +109,6 @@ public class Node
 			
 			_machineIp = InetAddress.getLocalHost().getHostAddress().toString();
 			
-			// no matter what, just delete your SDFS when you join.
-			deleteSDFS();
-			
 			boolean flag = true;
 			while(flag)
 			{
@@ -146,12 +143,14 @@ public class Node
 			//_gossipList.add(node);
 			
 			//check systems properties and load them
-			boolean properties = loadSystemProperties();
-			if(!properties)
+			if(!loadSystemProperties())
 			{
 				System.out.println("System.properties file missing or wrong/missing config! Exiting!");
-				//return;
+				return;
 			}
+			
+			// no matter what, just delete your SDFS when you join.
+			deleteSDFS();
 			  
 			//check for introducer
 			checkIntroducer(_machineIp, node);
@@ -195,7 +194,7 @@ public class Node
 			}
 			
 			flag = true;
-			while(flag && properties)
+			while(flag)
 			{
 				System.out.println("\nHere are your options: ");
 				System.out.println("Type 'list' to view the current membership list.");
