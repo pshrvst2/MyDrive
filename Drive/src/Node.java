@@ -561,7 +561,7 @@ public class Node
 	
 	private static boolean loadSystemProperties() 
 	{
-		boolean flag = true;
+		boolean flag = false;
 		try 
 		{
 			File file = new File("system.properties");
@@ -586,6 +586,8 @@ public class Node
 				_logger.error("System properties missing! Check configurations!!");
 				flag = false;
 			}
+			else
+				flag = true;
 		} 
 		catch (FileNotFoundException e) 
 		{
