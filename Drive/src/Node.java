@@ -146,10 +146,11 @@ public class Node
 			//_gossipList.add(node);
 			
 			//check systems properties and load them
-			if(!loadSystemProperties())
+			boolean properties = loadSystemProperties();
+			if(!properties)
 			{
 				System.out.println("System.properties file missing or wrong/missing config! Exiting!");
-				return;
+				//return;
 			}
 			  
 			//check for introducer
@@ -194,7 +195,7 @@ public class Node
 			}
 			
 			flag = true;
-			while(flag)
+			while(flag && properties)
 			{
 				System.out.println("\nHere are your options: ");
 				System.out.println("Type 'list' to view the current membership list.");
