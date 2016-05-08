@@ -202,9 +202,9 @@ public class Node
 				System.out.println("Type 'info' to know your machine details");
 				
 				//new user options for MP3
-				System.out.println("Type 'put <filename>' to replicate the file on SDFS");
-				System.out.println("Type 'get <filename>' to to get SDFS file to local file system");
-				System.out.println("Type 'delete <filename>' to delete file from SDFS");
+				System.out.println("Type 'put <filename>' to replicate the file on MDFS");
+				System.out.println("Type 'get <filename>' to to get MDFS file to local/web server");
+				System.out.println("Type 'delete <filename>' to delete file from MDFS");
 				System.out.println("Type 'store' to show the file list");
 				
 				BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
