@@ -323,38 +323,40 @@ public class Node
 				else if(userCmd.startsWith("store"))
 				{
 					String delim = "\t||\t";
-					System.out.println("*********File Name********"+delim+"**Address 1**"+delim+"Address 2"+delim+"Address 3");
+					System.out.println("*********File Name********"+delim+"**Address 1**"+delim+"**Address 2**"+delim+"**Address 3**");
 					_logger.info("User want to list the files");
-					_logger.info("*********File Name********"+delim+"**Address 1**"+delim+"Address 2"+delim+"Address 3");
+					_logger.info("*********File Name********"+delim+"**Address 1**"+delim+"**Address 2**"+delim+"**Address 3**");
 					for (HashMap.Entry<String, List<String>> record : _fileMap.entrySet())
 					{
+						if(record.getKey().equals("msg#"))
+							continue;
 						List<String> temp = record.getValue();
 						if(temp.size()==3)
 						{
 							System.out.println(record.getKey()
-									+delim+temp.get(0)+"\t"
-									+delim+temp.get(1)+"\t"
-									+delim+temp.get(2)+"\t");
+									+delim+temp.get(0)
+									+delim+temp.get(1)
+									+delim+temp.get(2));
 							_logger.info(record.getKey()
-									+delim+temp.get(0)+"\t"
-									+delim+temp.get(1)+"\t"
-									+delim+temp.get(2)+"\t");
+									+delim+temp.get(0)
+									+delim+temp.get(1)
+									+delim+temp.get(2));
 						}
 						else if(temp.size()==2)
 						{
 							System.out.println(record.getKey()
-									+delim+temp.get(0)+"\t"
-									+delim+temp.get(1)+"\t");
+									+delim+temp.get(0)
+									+delim+temp.get(1));
 							_logger.info(record.getKey()
-									+delim+temp.get(0)+"\t"
-									+delim+temp.get(1)+"\t");
+									+delim+temp.get(0)
+									+delim+temp.get(1));
 						}
 						else if(temp.size()==1)
 						{
 							System.out.println(record.getKey()
-									+delim+temp.get(0)+"\t");
+									+delim+temp.get(0));
 							_logger.info(record.getKey()
-									+delim+temp.get(0)+"\t");
+									+delim+temp.get(0));
 						}				
 					}
 				}
